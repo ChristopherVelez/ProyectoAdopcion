@@ -5,15 +5,73 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/Login_Fondo"
+    android:padding="24dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <!--    Contenedor del formulario  -->
+    <LinearLayout
+        android:id="@+id/LoginForm"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:background="@color/Fondo"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!--        Titulo -->
+        <EditText
+            android:id="@+id/tvTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Iniciar Sesion"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:layout_marginBottom="16dp"
+            />
+        <!--        Campo de Usuario -->
+        <EditText
+            android:id="@+id/etUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Usuario"
+            android:inputType="textPassword"
+            android:drawableLeft="@android:drawable/ic_menu_myplaces"/>
+
+        <!--        Campo de contrasenia-->
+        <EditText
+            android:id="@+id/etContraseña"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:drawableLeft="@android:drawable/ic_lock_lock"/>
+
+        <!--        Boton de Logear -->
+        <Button
+            android:id="@+id/BtnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Iniciar Sesion"
+            android:textStyle="bold"
+            android:backgroundTint="@color/AzulMarino"
+            android:layout_marginTop="16dp"/>
+
+        <!--        Boton de adoptar-->
+        <Button
+            android:id="@+id/btnAdoptar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Adoptar"
+            android:textStyle="bold"
+            android:backgroundTint="@color/AzulMarino"
+            android:layout_marginTop="12dp"
+            />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
