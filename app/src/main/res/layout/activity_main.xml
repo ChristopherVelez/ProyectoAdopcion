@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/Login_Fondo"
+    android:background="@drawable/loginfondo"
     android:padding="24dp"
     tools:context=".MainActivity">
 
