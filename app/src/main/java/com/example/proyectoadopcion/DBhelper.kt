@@ -18,10 +18,6 @@ class DBhelper (context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null
         private const val COLUMN_PESO = "peso"
         private const val COLUMN_GENERO = "genero"
         private const val COLUMN_URLIMG = "urlImg"
-
-
-
-
     }
 
     //CREAR BASE DE DATOS
@@ -79,8 +75,51 @@ class DBhelper (context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null
         return mascotaList
     }
 
+    //Actualiza mascota
+    fun updateMascota(mascota: Mascota){
+        val db = writableDatabase
+        val values = ContentValues().apply{
+            put(COLUMN_TIPOMASCOTA,mascota.tipoMascota)
+            put( COLUMN_RAZA, mascota.raza)
+            put( COLUMN_EDAD, mascota.edad)
+            put( COLUMN_DESCRIPCION, mascota.descripcion)
+            put( COLUMN_PESO, mascota.peso)
+            put( COLUMN_GENERO, mascota.genero)
+            put( COLUMN_URLIMG, mascota.urlImg)
+        }
+        val whereclasue = "$COLUMN_ID = ?"
+        val whereArgs = arrayOf(mascota.id.toString())
+        db.update(TABLE_NAMEMASCOTA, values, whereclasue, whereArgs)
+        db.close()
+    }
 
+    //Eliminar mascota
+    fun deleteMascota(mascotaId : Int){
+        val db = writableDatabase
+        val whereClause = "$COLUMN_ID = ?"
+        val whereArg = arrayOf(mascotaId.toString())
+        db.delete(TABLE_NAMEMASCOTA, whereClause, whereArg)
+        db.close()
+    }
 
+    // Obtener nota por el ID
+    fun getMascotaById(mascotaId: Int): Mascota{
+        val db = readableDatabase
+        val query = "SELECT * FROM $TABLE_NAMEMASCOTA WHERE $COLUMN_ID = $mascotaId"
+        val cursor = db.rawQuery(query, null)
+        cursor.moveToFirst()
+        val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID))
+        val tipoMascota = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIPOMASCOTA))
+        val raza = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_RAZA))
+        val edad = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EDAD))
+        val descripcion = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DESCRIPCION))
+        val peso = cursor.getFloat(cursor.getColumnIndexOrThrow(COLUMN_PESO))
+        val genero = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_GENERO))
+        val urlImg = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_URLIMG))
+        cursor.close()
+        db.close()
+        return Mascota(id, tipoMascota, raza, edad, descripcion, peso, genero, urlImg)
+    }
 
 
 
