@@ -127,7 +127,6 @@
             android:hint="URL imagen"
             android:inputType="textUri"
             android:layout_marginBottom="20dp" />
-
         <Button
             android:id="@+id/btnGuardar"
             android:layout_width="match_parent"
