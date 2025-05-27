@@ -22,19 +22,21 @@ class DBhelper (context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null
         //TABLA COORDINADOR MASCOTA
         private const val TABLE_NAMECOO = "coordinador"
         private const val COLUMN_IDCOO = "id"
-        private const val COLUMN_CORREOCOO = "correo"
-        private const val COLUMM_CONTRASENACOO = "contrasena"
+        private const val COLUMN_CORREO = "correo"
+        private const val COLUMN_CONTRASENA = "contrasena"
 
 
     }
 
+    //CREAR BASE DE DATOS
     override fun onCreate(db: SQLiteDatabase?) {
         val createTableQueryMacota = "CREATE TABLE $TABLE_NAMEMASCOTA ($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_TIPOMASCOTA TEXT, $COLUMN_RAZA TEXT, $COLUMN_EDAD TEXT, $COLUMN_DESCRIPCION TEXT, $COLUMN_PESO FLOAT, $COLUMN_GENERO TEXT, $COLUMN_URLIMG TEXT)"
-        val createTableQueryCoordinador = "CREATE TABLE $TABLE_NAMECOO ($COLUMN_IDCOO INTEGER PRIMARY KEY, $COLUMN_CORREOCOO TEXT, $COLUMM_CONTRASENACOO TEXT)"
+        val createTableQueryCoordinador = "CREATE TABLE $TABLE_NAMECOO ($COLUMN_IDCOO INTEGER PRIMARY KEY, $COLUMN_CORREO TEXT, $COLUMN_CONTRASENA TEXT)"
         db?.execSQL(createTableQueryMacota)
         db?.execSQL(createTableQueryCoordinador)
     }
 
+    //ACTUALIZAR BASE DE DATOS
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         val dropTableMascotaQuery = "DROP TABLE IF EXISTS $TABLE_NAMEMASCOTA"
         val dropTableCoordinadorQuery = "DROP TABLE IF EXISTS $TABLE_NAMECOO"
@@ -45,6 +47,7 @@ class DBhelper (context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null
     }
 
     //CRUD MASCOTA
+    //CREAR
     fun insertarMascota(mascota: Mascota){
         val db = writableDatabase
         val values = ContentValues().apply{
@@ -59,6 +62,8 @@ class DBhelper (context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null
         db.insert(TABLE_NAMEMASCOTA, null, values)
         db.close()
     }
+
+    //CONSULTARLISTA
     fun getAllMascotas(): List<Mascota>{
         val mascotaList = mutableListOf<Mascota>()
         val db = readableDatabase
@@ -66,13 +71,14 @@ class DBhelper (context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null
         val cursor = db.rawQuery(query, null)
         while (cursor.moveToNext()){
             val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID))
-            val tipoMascota = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIPOMASCOTA))
+            val tipoMascota = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CORREO))
             val raza = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_RAZA))
             val edad = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EDAD))
             val descripcion = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DESCRIPCION))
             val peso = cursor.getFloat(cursor.getColumnIndexOrThrow(COLUMN_PESO))
             val genero = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_GENERO))
             val urlImg = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_URLIMG))
+
             val mascota = Mascota(id, tipoMascota, raza, edad, descripcion, peso, genero, urlImg)
             mascotaList.add(mascota)
         }
@@ -81,11 +87,51 @@ class DBhelper (context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null
         return mascotaList
     }
 
+
+
+
+
+
+
+
+
+
+
+
+    //CRUD COORDINADOR
+    //CREAR
     fun insertarCoordinador(){
-
+        fun insertarCoordinador(coordinador: Coordinador){
+            val db = writableDatabase
+            val values = ContentValues().apply{
+                put(COLUMN_CORREO,coordinador.correo)
+                put(COLUMN_CONTRASENA, coordinador.contrasena)
+            }
+            db.insert(TABLE_NAMECOO, null, values)
+            db.close()
+        }
     }
-    fun getAllCoordinador(){
 
+    //CONSULTARLISTA
+    fun getAllCoordinador(): List<Coordinador>{
+        val coordinadorList = mutableListOf<Coordinador>()
+        val db = readableDatabase
+        val query = "SELECT * FROM $TABLE_NAMECOO"
+        val cursor = db.rawQuery(query, null)
+        while (cursor.moveToNext()){
+            val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_IDCOO))
+            val correo = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIPOMASCOTA))
+            val contrasena = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CONTRASENA))
+
+            val coordinador = Coordinador(id, correo, contrasena)
+            coordinadorList.add(coordinador)
+        }
+        cursor.close()
+        db.close()
+        return coordinadorList
     }
+
+
+
 
 }
