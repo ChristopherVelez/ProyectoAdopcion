@@ -22,13 +22,13 @@ class AddMascotaActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Poblar Spinner de especie
-        val especies = listOf("Perro", "Gato", "Ave", "Otro")
+        val especies = listOf("Perro", "Gato")
         val adapterEspecie = ArrayAdapter(this, android.R.layout.simple_spinner_item, especies)
         adapterEspecie.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerTipoMascota.adapter = adapterEspecie
 
         // Poblar Spinner de género
-        val generos = listOf("Masculino", "Femenino")
+        val generos = listOf("Macho", "Hembra")
         val adapterGenero = ArrayAdapter(this, android.R.layout.simple_spinner_item, generos)
         adapterGenero.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerGenero.adapter = adapterGenero
