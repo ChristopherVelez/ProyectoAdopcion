@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.view.menu.MenuView.ItemView
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
@@ -68,7 +69,10 @@ class MascotaAdapter(private var mascotas: List<Mascota>, context: Context) :
             }
             holder.itemView.context.startActivity(intent)
         }
+
+
     }
+
 
     fun refresData(newMascota: List<Mascota>) {
         mascotas = newMascota

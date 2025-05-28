@@ -120,7 +120,28 @@ class DBhelper (context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null
         db.close()
         return Mascota(id, tipoMascota, raza, edad, descripcion, peso, genero, urlImg)
     }
+    fun getMascotasByGenero(MascotaGenero: String): List<Mascota>{
+        val mascotaList = mutableListOf<Mascota>()
+        val db = readableDatabase
+        val query = "SELECT * FROM $TABLE_NAMEMASCOTA WHERE LOWER($COLUMN_GENERO) =  LOWER('$MascotaGenero')"
+        val cursor = db.rawQuery(query, null)
+        while (cursor.moveToNext()){
+            val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID))
+            val tipoMascota = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIPOMASCOTA))
+            val raza = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_RAZA))
+            val edad = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EDAD))
+            val descripcion = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DESCRIPCION))
+            val peso = cursor.getFloat(cursor.getColumnIndexOrThrow(COLUMN_PESO))
+            val genero = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_GENERO))
+            val urlImg = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_URLIMG))
 
+            val mascota = Mascota(id, tipoMascota, raza, edad, descripcion, peso, genero, urlImg)
+            mascotaList.add(mascota)
+        }
+        cursor.close()
+        db.close()
+        return mascotaList
+    }
 
 
 

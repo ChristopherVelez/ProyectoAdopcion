@@ -45,10 +45,28 @@ class InicioActivity : AppCompatActivity() {
             val intent=Intent(this,MainActivity::class.java)
             startActivity(intent)
         }
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                filtrarPorGenero(query)
+                return true
+            }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                filtrarPorGenero(newText)
+                return true
+            }
+        })
 
     }
 
-
+    private fun filtrarPorGenero(genero: String?) {
+        val generoFiltro = genero?.trim()
+        val mascotasFiltradas = if (generoFiltro.isNullOrEmpty()) {
+            db.getAllMascotas()
+        } else {
+            db.getMascotasByGenero(generoFiltro)
+        }
+        mascotaAdapter.refresData(mascotasFiltradas)
+    }
     override fun onResume() {
         super.onResume()
         mascotaAdapter.refresData(db.getAllMascotas())
