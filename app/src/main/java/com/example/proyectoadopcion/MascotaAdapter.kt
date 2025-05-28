@@ -13,7 +13,8 @@ import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class MascotaAdapter(private var mascotas: List<Mascota>, context: Context) :
+class MascotaAdapter(private var mascotas: List<Mascota>, context: Context,
+                     private val esCoordinador: Boolean) :
     RecyclerView.Adapter<MascotaAdapter.MascotaViewHolder>() {
     private val db: DBhelper = DBhelper(context)
 
@@ -39,6 +40,7 @@ class MascotaAdapter(private var mascotas: List<Mascota>, context: Context) :
         return mascotas.size
     }
 
+
     override fun onBindViewHolder(holder: MascotaViewHolder, position: Int) {
         val mascota = mascotas[position]
         holder.tipoMascotaTextView.text = "Es un ${mascota.tipoMascota}"
@@ -51,6 +53,15 @@ class MascotaAdapter(private var mascotas: List<Mascota>, context: Context) :
             .load(mascota.urlImg)
             .error(R.drawable.cl_linkroto)
             .into(holder.image_mascota)
+
+        if (esCoordinador) {
+            holder.updateButton.visibility = View.VISIBLE
+            holder.deleteButton.visibility = View.VISIBLE
+        } else {
+            holder.updateButton.visibility = View.GONE
+            holder.deleteButton.visibility = View.GONE
+        }
+
 
         holder.deleteButton.setOnClickListener {
             db.deleteMascota(mascota.id)

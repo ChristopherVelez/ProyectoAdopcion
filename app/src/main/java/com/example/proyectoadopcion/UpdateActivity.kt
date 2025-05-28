@@ -1,6 +1,7 @@
 package com.example.proyectoadopcion
 
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -44,6 +45,7 @@ class UpdateActivity : AppCompatActivity() {
             finish()
             return
         }
+
 
         val mascota = db.getMascotaById(mascotaid)
         binding.editaretRaza.setText(mascota.raza)

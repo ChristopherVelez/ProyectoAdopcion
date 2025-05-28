@@ -2,6 +2,7 @@ package com.example.proyectoadopcion
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,6 +16,7 @@ class InicioActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInicioBinding
     private lateinit var db: DBhelper
     private lateinit var mascotaAdapter: MascotaAdapter
+    private var esCoordinador: Boolean = false
 
 
 
@@ -23,7 +25,7 @@ class InicioActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityInicioBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        esCoordinador = intent.getBooleanExtra("esCoordinador", false)
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -32,7 +34,7 @@ class InicioActivity : AppCompatActivity() {
             insets
         }
         db = DBhelper(this)
-        mascotaAdapter = MascotaAdapter(db.getAllMascotas(),this)
+        mascotaAdapter = MascotaAdapter(db.getAllMascotas(), this, esCoordinador) // <-- le pasas el rol
 
         binding.noteRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.noteRecyclerView.adapter =mascotaAdapter
@@ -41,6 +43,13 @@ class InicioActivity : AppCompatActivity() {
             val intent=Intent(this,AddMascotaActivity::class.java)
             startActivity(intent)
         }
+
+        if (esCoordinador) {
+            binding.addButton.visibility = View.VISIBLE
+        } else {
+            binding.addButton.visibility = View.GONE
+        }
+
         binding.UserButton.setOnClickListener {
             val intent=Intent(this,MainActivity::class.java)
             startActivity(intent)
