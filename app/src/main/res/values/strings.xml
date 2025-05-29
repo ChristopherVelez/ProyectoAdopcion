@@ -1,3 +1,38 @@
 <resources>
     <string name="app_name">ProyectoAdopcion</string>
+    <string name="mascotas">Mascotas</string>
+    <string name="addmascota">Agregar mascotas</string>
+    <string name="especie">Especie</string>
+    <string name="raza_label">Raza:</string>
+    <string name="raza_hin">Escriba la raza</string>
+
+    <string name="edad_label">Edad:</string>
+    <string name="edad_hin">Edad (Ej. 2):</string>
+    <string name="descripcion_label">Descripción:</string>
+    <string name="descripcion_hin">Escriba la descripción:</string>
+    <string name="peso_label">Peso:</string>
+    <string name="peso_hin">Peso (Kg)</string>
+    <string name="genero_label">Género:</string>
+    <string name="url_label">URL de imagen:</string>
+    <string name="url_hin">URL de imagen</string>
+
+    <string name="save_mascota">Guardar Mascota</string>
+
+    <string name="edit_mascota">Editar Mascota</string>
+
+    <string name="iniciarsesion_label">Iniciar Sesion</string>
+    <string name="usuario_hin">Usuario</string>
+    <string name="contrasena_hin">Contraseña</string>
+    <string name="adoptar_btn">Adoptar</string>
+
+
+
+
+
+
+
+
+
+
+
 </resources>

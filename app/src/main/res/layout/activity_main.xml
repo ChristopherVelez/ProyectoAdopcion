@@ -27,7 +27,7 @@
             android:id="@+id/tvTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Iniciar Sesion"
+            android:text="@string/iniciarsesion_label"
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF"
@@ -39,7 +39,7 @@
             android:id="@+id/etUsuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Usuario"
+            android:hint="@string/usuario_hin"
             android:inputType="textPassword"
             android:drawableLeft="@android:drawable/ic_menu_myplaces"/>
 
@@ -48,7 +48,7 @@
             android:id="@+id/etContraseña"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Contraseña"
+            android:hint="@string/contrasena_hin"
             android:inputType="textPassword"
             android:drawableLeft="@android:drawable/ic_lock_lock"/>
 
@@ -57,7 +57,7 @@
             android:id="@+id/BtnLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Iniciar Sesion"
+            android:text="@string/iniciarsesion_label"
             android:textStyle="bold"
             android:backgroundTint="@color/AzulMarino"
             android:layout_marginTop="16dp"/>
@@ -67,7 +67,7 @@
             android:id="@+id/btnAdoptar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Adoptar"
+            android:text="@string/adoptar_btn"
             android:textStyle="bold"
             android:backgroundTint="@color/AzulMarino"
             android:layout_marginTop="12dp"

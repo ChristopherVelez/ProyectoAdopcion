@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
-            android:text="Agregar Mascota"
+            android:text="@string/addmascota"
             android:textColor="@color/ug"
             android:textSize="28sp"
             android:textStyle="bold"
@@ -28,7 +28,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Especie:"
+            android:text="@string/especie"
             android:textSize="18sp"
             android:layout_marginBottom="4dp" />
 
@@ -41,7 +41,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Raza:"
+            android:text="@string/raza_label"
             android:textSize="18sp"
             android:layout_marginBottom="4dp" />
 
@@ -49,14 +49,14 @@
             android:id="@+id/etRaza"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Raza"
+            android:hint="@string/raza_hin"
             android:inputType="text"
             android:layout_marginBottom="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Edad:"
+            android:text="@string/edad_label"
             android:textSize="18sp"
             android:layout_marginBottom="4dp" />
 
@@ -64,14 +64,14 @@
             android:id="@+id/etEdad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Edad (Ej. 2 años)"
+            android:hint="@string/edad_hin"
             android:inputType="text"
             android:layout_marginBottom="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Descripción:"
+            android:text="@string/descripcion_label"
             android:textSize="18sp"
             android:layout_marginBottom="4dp" />
 
@@ -79,7 +79,7 @@
             android:id="@+id/etDescripcion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Descripción"
+            android:hint="@string/descripcion_hin"
             android:inputType="textMultiLine"
             android:minLines="3"
             android:maxLines="5"
@@ -88,7 +88,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Peso:"
+            android:text="@string/peso_label"
             android:textSize="18sp"
             android:layout_marginBottom="4dp" />
 
@@ -96,14 +96,14 @@
             android:id="@+id/etPeso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Peso (Kg)"
+            android:hint="@string/peso_hin"
             android:inputType="numberDecimal"
             android:layout_marginBottom="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Género:"
+            android:text="@string/genero_label"
             android:textSize="18sp"
             android:layout_marginBottom="4dp" />
 
@@ -116,7 +116,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="URL de imagen:"
+            android:text="@string/url_label"
             android:textSize="18sp"
             android:layout_marginBottom="4dp" />
 
@@ -124,14 +124,14 @@
             android:id="@+id/etUrlImg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="URL imagen"
+            android:hint="@string/url_hin"
             android:inputType="textUri"
             android:layout_marginBottom="20dp" />
         <Button
             android:id="@+id/btnGuardar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Guardar Mascota"
+            android:text="@string/save_mascota"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="20dp" />
 

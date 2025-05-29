@@ -33,7 +33,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/poppins"
-                android:text="Tipo mascota" />
+                android:text="@string/especie" />
 
             <TextView
                 android:id="@+id/razaTextView"
@@ -43,7 +43,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/poppins"
-                android:text="Raza" />
+                android:text="@string/raza_hin" />
 
             <TextView
                 android:id="@+id/edadTextView"
@@ -53,7 +53,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/poppins"
-                android:text="Edad" />
+                android:text="@string/edad_label" />
 
             <TextView
                 android:id="@+id/pesoTextView"
@@ -63,7 +63,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/poppins"
-                android:text="Peso" />
+                android:text="@string/peso_label" />
 
             <TextView
                 android:id="@+id/generoTextView"
@@ -73,7 +73,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/poppins"
-                android:text="Genero" />
+                android:text="@string/genero_label" />
 
 
         </RelativeLayout>
